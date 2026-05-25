@@ -1,0 +1,11 @@
+pandas
+numpy
+xgboost
+scikit-learn
+shap
+anthropic
+matplotlib
+jupyter
+seaborn
+notebook
+ipykernel
