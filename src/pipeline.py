@@ -95,16 +95,36 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
             narrative = f"Narrative generation failed: {str(e)}"
         recommended_action = "Review required"
 
-    # Safety override: any transaction over the large-amount threshold must go to a human
-    # regardless of score or Claude's assessment.
+    # Safety floor: large transactions must go to at least a human review.
+    # "Escalate" is preserved — the large amount reinforces escalation rather than
+    # overriding it. Only "Dismiss" is upgraded to "Review required".
     amount_paid = _get_amount(alert_row, "amount_paid")
     amount_received = _get_amount(alert_row, "amount_received")
     if max(amount_paid, amount_received) > LARGE_TRANSACTION_THRESHOLD:
-        logger.info(
-            "Alert %s: large transaction override fired (amount_paid=%.2f, "
-            "amount_received=%.2f). Overriding recommended_action from '%s' to "
-            "'Review required'.",
-            alert_id, amount_paid, amount_received, recommended_action,
+        if recommended_action == "Dismiss":
+            logger.info(
+                "Alert %s: large transaction floor fired (amount_paid=%.2f, "
+                "amount_received=%.2f). Upgrading recommended_action from 'Dismiss' to "
+                "'Review required'.",
+                alert_id, amount_paid, amount_received,
+            )
+            recommended_action = "Review required"
+        else:
+            logger.info(
+                "Alert %s: large transaction threshold met (amount_paid=%.2f, "
+                "amount_received=%.2f). recommended_action is already '%s'.",
+                alert_id, amount_paid, amount_received, recommended_action,
+            )
+
+    # Label/action consistency check: the XGBoost-derived label acts as a lower bound.
+    # A "Likely true positive" or "Review required" label is incompatible with "Dismiss"
+    # because that would mean the pipeline is simultaneously flagging and clearing an alert.
+    label = _score_to_label(score)
+    if recommended_action == "Dismiss" and ("true positive" in label or label == "Review required"):
+        logger.warning(
+            "Alert %s: label/action contradiction — label '%s' is incompatible with "
+            "action 'Dismiss'. Overriding to 'Review required'.",
+            alert_id, label,
         )
         recommended_action = "Review required"
 

@@ -180,8 +180,8 @@ def test_large_transaction_override(caplog):
         f"Expected 'Review required' after large-tx override, "
         f"got '{result['recommended_action']}'"
     )
-    assert "large transaction override" in caplog.text.lower(), (
-        "Expected a log message about the large transaction override"
+    assert "large transaction" in caplog.text.lower(), (
+        "Expected a log message about the large transaction threshold"
     )
 
 

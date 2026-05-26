@@ -54,11 +54,34 @@ are true:
    jurisdiction risk > 0.80
 6. Transaction amount > 1,000,000, regardless of score
 
+## Additional action rules
+
+**$100k soft review threshold**: If transaction amount > 100,000 in any 
+currency AND score < 0.50, recommended_action should be "Review required" 
+unless jurisdiction risk < 0.20 AND customer risk tier is 0 — in that 
+case "Dismiss" may be appropriate if all other factors are clearly low risk.
+
+**Tier 2 customer minimum**: If customer_risk_tier is 2 (highest tier), 
+recommended_action must be minimum "Review required" regardless of model 
+score.
+
 ## Missing data handling
 Missing currency or payment method fields ("N/A") are dataset artefacts.
 Note them in the narrative as documentation gaps. Do NOT treat them as 
 escalation triggers on their own. They only contribute to "Review 
 required" when combined with at least one genuine risk factor.
+
+## Post-processing validation (pipeline.py)
+After Claude returns an action, pipeline.py enforces two safety checks:
+
+1. **Large transaction floor**: If amount_paid or amount_received > 500,000, 
+   "Dismiss" is upgraded to "Review required". "Escalate" is preserved — 
+   large amounts reinforce escalation rather than downgrading it.
+
+2. **Label/action consistency**: The XGBoost-derived label acts as a lower 
+   bound. If label is "Likely true positive" or "Review required" and action 
+   is "Dismiss", the action is overridden to "Review required" and a warning 
+   is logged. This catches prompt-level inconsistencies.
 
 ## Output JSON schema
 {
@@ -87,7 +110,12 @@ required" when combined with at least one genuine risk factor.
   "Review required"
 - v3: refined escalation criteria with explicit Escalate rules, 
   demoted missing data fields to documentation gaps only — 
-  outputs/sample_predictions_v3.json is the current baseline
+  42 Dismiss / 2 Review required / 6 Escalate
+- v4: fixed label/action contradictions (alerts 5, 11, 35), fixed 
+  large transaction floor to preserve Escalate (alert 27 now 
+  correctly Escalate), added $100k soft review threshold and tier 2 
+  customer minimum rule — outputs/sample_predictions_v4.json is 
+  the current baseline — 35 Dismiss / 6 Review required / 9 Escalate
 
 ## Do not change
 - Model choice (XGBoost + SHAP + Claude)

@@ -48,6 +48,20 @@ Do NOT default here just because data fields are missing.
 (jurisdiction_risk > 0.80) is being scored as risk-lowering AND jurisdiction risk > 0.80.
 6. Transaction amount > 1,000,000, regardless of score.
 
+After writing the narrative, re-check every escalation criterion independently. \
+If ANY criterion is met, recommended_action MUST be "Escalate", regardless of what \
+the narrative reasoning concluded for the overall risk picture.
+
+--- ADDITIONAL RULES ---
+
+Soft review threshold: If transaction amount > 100,000 in any currency AND score < 0.50, \
+recommended_action should be "Review required" (not "Dismiss", not "Escalate") unless \
+jurisdiction risk is below 0.20 AND customer risk tier is 0 — in that case "Dismiss" \
+may be appropriate if all other factors are clearly low risk.
+
+Tier 2 customer minimum: If customer_risk_tier is 2 (highest tier), \
+recommended_action must be minimum "Review required", regardless of model score.
+
 --- INSTRUCTIONS ---
 
 The recommended_action MUST be consistent with the narrative reasoning. \
