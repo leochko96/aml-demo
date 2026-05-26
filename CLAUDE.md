@@ -48,10 +48,12 @@ are true:
 2. Transaction amount > 100,000 in any currency AND score > 0.50
 3. Counterparty jurisdiction risk > 0.90, regardless of model score
 4. Transaction amount falls within 10% below a round reporting threshold
-   (e.g. $9,000–$10,000 or $45,000–$50,000) AND score > 0.30
+   (e.g. $9,000–$10,000 or $45,000–$50,000) AND score > 0.30.
+   BOTH conditions must be true simultaneously — if score < 0.30,
+   criterion 4 is NOT triggered regardless of amount.
 5. Model behaviour is internally inconsistent: a high-risk input
-   (jurisdiction_risk > 0.80) is being scored as risk-lowering AND
-   jurisdiction risk > 0.80
+   (jurisdiction_risk > 0.85) is being scored as risk-lowering AND
+   jurisdiction risk > 0.85
 6. Transaction amount > 1,000,000, regardless of score
 
 ## Additional action rules
@@ -78,10 +80,12 @@ After Claude returns an action, pipeline.py enforces two safety checks:
    "Dismiss" is upgraded to "Review required". "Escalate" is preserved — 
    large amounts reinforce escalation rather than downgrading it.
 
-2. **Label/action consistency**: The XGBoost-derived label acts as a lower 
-   bound. If label is "Likely true positive" or "Review required" and action 
-   is "Dismiss", the action is overridden to "Review required" and a warning 
-   is logged. This catches prompt-level inconsistencies.
+2. **Label/action consistency**: Two checks run after all other overrides:
+   - If label is "Likely true positive" or "Review required" and action is 
+     "Dismiss", action is overridden to "Review required" (warning logged).
+   - If action is "Review required" and label is "Likely true positive", 
+     label is overridden to "Review required" (warning logged). This ensures 
+     the label field reflects the actual disposition, not just the raw score.
 
 ## Output JSON schema
 {
@@ -114,8 +118,13 @@ After Claude returns an action, pipeline.py enforces two safety checks:
 - v4: fixed label/action contradictions (alerts 5, 11, 35), fixed 
   large transaction floor to preserve Escalate (alert 27 now 
   correctly Escalate), added $100k soft review threshold and tier 2 
-  customer minimum rule — outputs/sample_predictions_v4.json is 
-  the current baseline — 35 Dismiss / 6 Review required / 9 Escalate
+  customer minimum rule — 35 Dismiss / 6 Review required / 9 Escalate
+- v5: fixed criterion 4 score threshold enforcement (alert 30 no longer 
+  escalated when score < 0.30), fixed label/action inconsistency for 
+  "Likely true positive" label (alert 5 label now "Review required"), 
+  raised criterion 5 jurisdiction threshold from 0.80 to 0.85 (alert 23 
+  no longer incorrectly escalated) — outputs/sample_predictions_v5.json 
+  is the current baseline — 37 Dismiss / 6 Review required / 7 Escalate
 
 ## Do not change
 - Model choice (XGBoost + SHAP + Claude)

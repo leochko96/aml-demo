@@ -43,9 +43,12 @@ Do NOT default here just because data fields are missing.
 2. Transaction amount > 100,000 in any currency AND score > 0.50.
 3. Counterparty jurisdiction risk > 0.90, regardless of model score.
 4. Transaction amount falls within 10% below a round reporting threshold \
-(e.g. $9,000–$10,000 or $45,000–$50,000) AND score > 0.30.
+(e.g. $9,000–$10,000 or $45,000–$50,000) AND score > 0.30. \
+Criterion 4 requires BOTH conditions to be true simultaneously: \
+(a) amount within 10% below a round threshold AND (b) score > 0.30. \
+If the score is below 0.30, criterion 4 is NOT triggered regardless of the transaction amount.
 5. Model behaviour is internally inconsistent: a high-risk input \
-(jurisdiction_risk > 0.80) is being scored as risk-lowering AND jurisdiction risk > 0.80.
+(jurisdiction_risk > 0.85) is being scored as risk-lowering AND jurisdiction risk > 0.85.
 6. Transaction amount > 1,000,000, regardless of score.
 
 After writing the narrative, re-check every escalation criterion independently. \

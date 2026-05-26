@@ -116,9 +116,8 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
                 alert_id, amount_paid, amount_received, recommended_action,
             )
 
-    # Label/action consistency check: the XGBoost-derived label acts as a lower bound.
-    # A "Likely true positive" or "Review required" label is incompatible with "Dismiss"
-    # because that would mean the pipeline is simultaneously flagging and clearing an alert.
+    # Label/action consistency checks.
+    # Check 1: "Likely true positive" or "Review required" label is incompatible with "Dismiss".
     label = _score_to_label(score)
     if recommended_action == "Dismiss" and ("true positive" in label or label == "Review required"):
         logger.warning(
@@ -128,10 +127,21 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
         )
         recommended_action = "Review required"
 
+    # Check 2: "Review required" action is incompatible with "Likely true positive" label.
+    # When the model scores an alert as high-confidence fraud but reasoning only warrants
+    # review, the label should reflect the action rather than the raw score bucket.
+    if recommended_action == "Review required" and label == "Likely true positive":
+        logger.warning(
+            "Alert %s: label/action mismatch — label '%s' contradicts action "
+            "'Review required'. Overriding label to 'Review required'.",
+            alert_id, label,
+        )
+        label = "Review required"
+
     return {
         "alert_id": str(alert_id) if alert_id is not None else "unknown",
         "score": round(score, 4),
-        "label": _score_to_label(score),
+        "label": label,
         "confidence": confidence,
         "top_features": explanation["top_features"],
         "narrative": narrative,
