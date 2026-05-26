@@ -4,11 +4,12 @@ End-to-end AML alert pipeline: score → explain → narrate → report.
 Processes transaction alerts through the full stack:
   1. XGBoost model scores the transaction
   2. SHAP explains which features drove the score
-  3. Claude generates a plain-English compliance narrative
+  3. Claude generates a plain-English compliance narrative and recommended action
   4. Output is a structured JSON report for the analyst queue
 """
 
 import json
+import logging
 import os
 import pandas as pd
 from pathlib import Path
@@ -16,8 +17,14 @@ from pathlib import Path
 from explain import explain_alert
 from narrative import generate_narrative
 
+logger = logging.getLogger(__name__)
+
 PROCESSED_DIR = Path(__file__).parent.parent / "data" / "processed"
 OUTPUTS_DIR = Path(__file__).parent.parent / "outputs"
+
+# Transactions above this amount (in any currency) are always escalated to human review,
+# regardless of model score or Claude's assessment.
+LARGE_TRANSACTION_THRESHOLD = 500_000
 
 
 def _score_to_label(score: float) -> str:
@@ -30,14 +37,13 @@ def _score_to_label(score: float) -> str:
         return "Likely false positive"
 
 
-def _score_to_action(score: float) -> str:
-    """Map risk level to a recommended compliance action."""
-    if score >= 0.7:
-        return "Escalate for SAR filing"
-    elif score >= 0.3:
-        return "Manual review by compliance analyst"
-    else:
-        return "Dismiss alert"
+def _get_amount(row, field: str) -> float:
+    """Safely extract a numeric amount from a pandas Series or dict-like row."""
+    val = row.get(field, 0) if hasattr(row, "get") else getattr(row, field, 0)
+    try:
+        return float(val)
+    except (TypeError, ValueError):
+        return 0.0
 
 
 def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
@@ -53,10 +59,10 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
           "alert_id": str,
           "score": float,
           "label": str,
-          "confidence": str,      # high / medium / low based on distance from 0.5
-          "top_features": [...],  # top 5 SHAP features
-          "narrative": str,       # Claude's plain-English assessment
-          "recommended_action": str
+          "confidence": str,            # high / medium / low based on distance from 0.5
+          "top_features": [...],        # top 5 SHAP features
+          "narrative": str,             # Claude's plain-English assessment
+          "recommended_action": str     # owned by Claude; overridden if large transaction
         }
     """
     explanation = explain_alert(alert_row)
@@ -72,9 +78,13 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
     else:
         confidence = "low"
 
-    # Claude narrative — gracefully handle missing API key
+    narrative = ""
+    recommended_action = "Review required"
+
     try:
-        narrative = generate_narrative(alert_row, explanation)
+        result = generate_narrative(alert_row, explanation)
+        narrative = result["narrative"]
+        recommended_action = result["recommended_action"]
     except Exception as e:
         if "ANTHROPIC_API_KEY" in str(e) or "authentication" in str(e).lower():
             narrative = (
@@ -83,6 +93,20 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
             )
         else:
             narrative = f"Narrative generation failed: {str(e)}"
+        recommended_action = "Review required"
+
+    # Safety override: any transaction over the large-amount threshold must go to a human
+    # regardless of score or Claude's assessment.
+    amount_paid = _get_amount(alert_row, "amount_paid")
+    amount_received = _get_amount(alert_row, "amount_received")
+    if max(amount_paid, amount_received) > LARGE_TRANSACTION_THRESHOLD:
+        logger.info(
+            "Alert %s: large transaction override fired (amount_paid=%.2f, "
+            "amount_received=%.2f). Overriding recommended_action from '%s' to "
+            "'Review required'.",
+            alert_id, amount_paid, amount_received, recommended_action,
+        )
+        recommended_action = "Review required"
 
     return {
         "alert_id": str(alert_id) if alert_id is not None else "unknown",
@@ -91,7 +115,7 @@ def run_pipeline(alert_row: pd.Series, alert_id: str = None) -> dict:
         "confidence": confidence,
         "top_features": explanation["top_features"],
         "narrative": narrative,
-        "recommended_action": _score_to_action(score),
+        "recommended_action": recommended_action,
     }
 
 
@@ -133,7 +157,6 @@ def main():
 
     print(f"\nSaved {len(results)} predictions to {out_path}")
 
-    # Print a quick summary
     labels = [r["label"] for r in results]
     print("\nLabel distribution:")
     for label in ["Likely true positive", "Review required", "Likely false positive"]:
