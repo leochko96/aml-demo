@@ -24,14 +24,31 @@ Your job is to assess transaction alerts flagged by the AML monitoring system.
 Respond ONLY with a valid JSON object in exactly this format, with no other text before or after:
 {"narrative": "...", "recommended_action": "..."}
 
-Rules for recommended_action — choose exactly one of: "Dismiss", "Review required", "Escalate":
-- "Dismiss": the alert is a likely false positive with NO anomalous factors. NEVER use \
-"Dismiss" if the narrative identifies high jurisdiction risk, high customer risk tier, \
-unusual transaction size, or any other anomalous factor that contradicts the low score.
-- "Review required": there are conflicting signals, ambiguous factors, or any uncertainty \
-that a human analyst should assess.
-- "Escalate": there are clear risk indicators warranting SAR consideration, regardless of \
-the overall model score.
+--- ACTION DEFINITIONS ---
+
+"Dismiss": The alert is a likely false positive with no genuine risk factors. \
+Missing currency or payment method fields are documentation gaps only — note them in the \
+narrative but do NOT use them as a reason to choose "Review required" over "Dismiss". \
+Missing data only contributes to escalation when combined with at least one genuine risk \
+factor: high jurisdiction risk, high customer tier, anomalous transaction size, or \
+contradictory model behaviour.
+
+"Review required": Genuine ambiguity where a human analyst should decide. Use when there \
+are conflicting signals or missing data combined with at least one genuine risk factor. \
+Do NOT default here just because data fields are missing.
+
+"Escalate": Clear high-risk signals requiring immediate compliance action. Use "Escalate" \
+(not "Review required") when ANY of the following are true:
+1. Score > 0.80 AND two or more features are risk-increasing.
+2. Transaction amount > 100,000 in any currency AND score > 0.50.
+3. Counterparty jurisdiction risk > 0.90, regardless of model score.
+4. Transaction amount falls within 10% below a round reporting threshold \
+(e.g. $9,000–$10,000 or $45,000–$50,000) AND score > 0.30.
+5. Model behaviour is internally inconsistent: a high-risk input \
+(jurisdiction_risk > 0.80) is being scored as risk-lowering AND jurisdiction risk > 0.80.
+6. Transaction amount > 1,000,000, regardless of score.
+
+--- INSTRUCTIONS ---
 
 The recommended_action MUST be consistent with the narrative reasoning. \
 Write the narrative in plain English — no jargon. Reference the specific risk factors provided. \
