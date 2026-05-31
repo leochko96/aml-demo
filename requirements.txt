@@ -9,3 +9,5 @@ jupyter
 seaborn
 notebook
 ipykernel
+fastapi
+uvicorn[standard]

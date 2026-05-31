@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0f1f3d;
+  --navy-light: #1a3358;
+  --white: #ffffff;
+  --surface: #f8f9fc;
+  --border: #e2e8f0;
+  --text-primary: #0f1f3d;
+  --text-secondary: #64748b;
+  --green: #0d9f6e;
+  --amber: #d97706;
+  --red: #dc2626;
+  --score-low: #0d9f6e;
+  --score-mid: #d97706;
+  --score-high: #dc2626;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-ibm-sans), 'IBM Plex Sans', system-ui, -apple-system,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apply IBM Plex Mono globally to font-mono class and elements */
+.font-mono,
+code,
+[data-mono] {
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', ui-monospace,
+    'Cascadia Code', monospace;
+}

@@ -1,0 +1,1952 @@
+[
+  {
+    "alert_id": "0",
+    "score": 0.0987,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.154074788093567
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.5871982574462891
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.4680868685245514
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.4244880974292755
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.3861467242240906
+      }
+    ],
+    "narrative": "This alert has a very low risk score of 0.099 and involves a small transaction of 208 in an unspecified currency. The customer is low risk (tier 0), the counterparty jurisdiction risk is minimal at 0.07, and the model's top features \u2014 merchant category and transaction amount \u2014 both actively lower the risk assessment. The only risk-raising factor is day of week, which is a weak signal on its own. The missing currency and payment method fields are noted as documentation gaps but do not constitute genuine risk factors in this context.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 208.0,
+    "amount_received": 208.0,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.0693
+  },
+  {
+    "alert_id": "1",
+    "score": 0.1998,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.8190808296203613
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.6396174430847168
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.39887872338294983
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.30198365449905396
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.16281700134277344
+      }
+    ],
+    "narrative": "This transaction of 131.24 (currency not specified) has been flagged with a low risk score of 0.20. The customer is in the lowest risk tier and the counterparty jurisdiction risk is moderate at 0.46. The model's primary drivers are risk-lowering, with only merchant category risk raising concern at a modest impact level. The missing currency and payment method fields are documentation gaps but do not constitute genuine risk factors given the low transaction amount, low customer tier, and absence of any high-risk jurisdictional or behavioural signals. No escalation criteria are met.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 131.24,
+    "amount_received": 131.24,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.4566
+  },
+  {
+    "alert_id": "2",
+    "score": 0.0724,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.0277388095855713
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.2850094735622406
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.19645527005195618
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.190897598862648
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.14893107116222382
+      }
+    ],
+    "narrative": "This alert has a low model score of 0.072, and all three top risk factors identified by the model are risk-lowering, indicating no anomalous patterns driving concern. The transaction amount of 5,130.11 is modest and well below any reporting threshold, and the counterparty jurisdiction risk is very low at 0.15. The customer is a medium-risk tier (tier 1), which does not trigger any minimum escalation requirement. Currency and payment method fields are missing, which is noted as a documentation gap, but given the absence of any genuine risk factors, this alone does not warrant further action.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 5130.11,
+    "amount_received": 5130.11,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.1493
+  },
+  {
+    "alert_id": "3",
+    "score": 0.1508,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.7121285200119019
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.2836715877056122
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.21479929983615875
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.08307333290576935
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.06649121642112732
+      }
+    ],
+    "narrative": "This transaction of 3,318.94 (currency not specified) has been assigned a low risk score of 0.151 by the AML monitoring system. The customer is in the lowest risk tier and the counterparty jurisdiction risk is moderate-low at 0.33. The model's top contributing factors show that merchant category and day of week both lower the risk, while the transaction amount provides a minor upward nudge \u2014 overall a benign profile. The currency and payment method fields are missing, which is a documentation gap worth noting, but these absences are not accompanied by any genuine risk factors such as high jurisdiction risk, anomalous transaction size, or elevated customer tier. No escalation criteria are met.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 3318.94,
+    "amount_received": 3318.94,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.3299
+  },
+  {
+    "alert_id": "4",
+    "score": 0.2145,
+    "label": "Likely false positive",
+    "confidence": "medium",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.0910743474960327
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.27484744787216187
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.23317690193653107
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.14105546474456787
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.10878737270832062
+      }
+    ],
+    "narrative": "This alert has a low model score of 0.215, and all three top risk factors identified by the model are risk-lowering, indicating the transaction pattern is broadly consistent with expected behaviour. The transaction amount of 1,138.77 is modest and well below any reporting threshold, and the counterparty jurisdiction risk is very low at 0.11. The customer is a medium-risk tier (tier 1), which does not require escalation or mandatory review on its own. The currency and payment method fields are missing, which is a documentation gap worth noting, but in the absence of any genuine risk factors these omissions alone do not warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 1138.77,
+    "amount_received": 1138.77,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.1093
+  },
+  {
+    "alert_id": "5",
+    "score": 0.7352,
+    "label": "Review required",
+    "confidence": "medium",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.8145390748977661
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.39241331815719604
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.3444520831108093
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.18824942409992218
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.18819963932037354
+      }
+    ],
+    "narrative": "This transaction has been flagged with a high risk score of 0.735, driven primarily by elevated merchant category risk and the transaction amount, both of which are risk-increasing factors. The customer is low-tier (tier 0) and the counterparty jurisdiction risk is moderate at 0.39, neither of which independently elevates concern. The transaction amount of 4,260.26 is modest and does not approach any reporting threshold, and the time-of-day factor actually lowers the overall risk. Currency and payment method fields are missing, which is noted as a documentation gap but does not constitute a genuine risk factor in isolation. Checking all escalation criteria: the score of 0.735 with two risk-increasing features does not meet the >0.80 threshold for criterion 1; the amount does not exceed 100,000; jurisdiction risk is well below 0.90; the amount is not within 10% below a round reporting threshold; there is no model inconsistency; and the amount does not exceed 1,000,000. No escalation criteria are met, and the overall risk picture, while flagged as high by the model, reflects a low-tier customer with a moderate-risk merchant category and a small transaction amount.",
+    "recommended_action": "Review required",
+    "amount_paid": 4260.26,
+    "amount_received": 4260.26,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.3862
+  },
+  {
+    "alert_id": "6",
+    "score": 0.0539,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.940928339958191
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.42359551787376404
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.26379621028900146
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.2551015019416809
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.17803403735160828
+      }
+    ],
+    "narrative": "This transaction of 4,351.43 (currency not specified) carries a very low model score of 0.054, with all top risk factors acting to lower risk. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is low at 0.26. The payment method and currency fields are missing, which are documentation gaps worth noting, but these alone do not elevate the risk given the absence of any genuine risk factors. No escalation criteria are met: the amount is well below reporting thresholds, the score is very low, and there are no high-risk jurisdictional or behavioural signals.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 4351.43,
+    "amount_received": 4351.43,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.2606
+  },
+  {
+    "alert_id": "7",
+    "score": 0.167,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.2447917461395264
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.52466881275177
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.46526697278022766
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.2343001365661621
+      },
+      {
+        "feature": "customer_risk_tier",
+        "direction": "decreases_risk",
+        "magnitude": 0.10969066619873047
+      }
+    ],
+    "narrative": "This alert was flagged with a low risk score of 0.167, involving a small transaction of 250.50 in an unspecified currency via an unspecified payment method. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is low at 0.17. The model's top features are predominantly risk-lowering (merchant category and transaction amount), with only a minor risk-raising signal from the day of the week. The missing currency and payment method fields are noted as documentation gaps but do not, on their own, elevate the risk assessment given the absence of any genuine risk factors such as high jurisdiction risk, anomalous transaction size, or contradictory model behaviour.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 250.5,
+    "amount_received": 250.5,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.1737
+  },
+  {
+    "alert_id": "8",
+    "score": 0.8056,
+    "label": "Likely true positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.948693573474884
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.274156779050827
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.23406913876533508
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.2015734612941742
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.17183470726013184
+      }
+    ],
+    "narrative": "This alert has a model risk score of 0.806, which is high, driven primarily by elevated merchant category risk and the transaction amount. However, the counterparty jurisdiction risk is very low at 0.08, and the model correctly treats it as risk-lowering, so there is no internal inconsistency. The customer is low risk (tier 0), the transaction amount of 3,464.58 is modest and does not approach any reporting threshold, and there is no cross-currency element. The currency and payment method fields are undocumented, which is a data quality gap but does not constitute a genuine risk factor given the otherwise low-risk profile. Checking escalation criteria: Criterion 1 requires score > 0.80 AND two or more risk-increasing features \u2014 the score is 0.806 and there are exactly two risk-increasing features (merchant_category_risk and amount_paid), so Criterion 1 is met and this alert must be escalated.",
+    "recommended_action": "Escalate",
+    "amount_paid": 3464.58,
+    "amount_received": 3464.58,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.0787
+  },
+  {
+    "alert_id": "9",
+    "score": 0.0034,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 2.079322099685669
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 1.5002859830856323
+      },
+      {
+        "feature": "amount_ratio",
+        "direction": "decreases_risk",
+        "magnitude": 0.9526512622833252
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.6187514662742615
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.23190206289291382
+      }
+    ],
+    "narrative": "This alert carries an extremely low model score of 0.003, and all three top risk factors are risk-lowering, suggesting the transaction itself is benign in terms of amount and timing. However, the counterparty jurisdiction risk is 0.96, which is critically high and triggers mandatory escalation under criterion 3 (jurisdiction risk > 0.90), regardless of the model score. Additionally, this represents a case of internally inconsistent model behaviour: a jurisdiction risk above 0.85 is present yet no risk-increasing features are reflected in the model output, which independently triggers escalation under criterion 5. The transaction amount and currency fields are missing or unclear, which are noted as documentation gaps but do not drive this decision. The combination of extreme jurisdiction risk and model inconsistency requires immediate compliance action.",
+    "recommended_action": "Escalate",
+    "amount_paid": 0.0,
+    "amount_received": 0.0,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.96
+  },
+  {
+    "alert_id": "10",
+    "score": 0.079,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.117333173751831
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.8084983825683594
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.40228959918022156
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.2730393409729004
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.13968345522880554
+      }
+    ],
+    "narrative": "This transaction of 148.14 (currency not specified) has been flagged with a very low risk score of 0.079, well below any escalation or review threshold. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is moderate at 0.38, neither of which alone warrants escalation. All three model features \u2014 merchant category risk, amount paid, and amount received \u2014 are risk-lowering, indicating consistent and coherent model behaviour. The currency and payment method fields are undocumented, which is a data quality gap worth noting, but in the absence of any genuine risk factors these omissions do not elevate the recommended action. No escalation criteria are met, and the overall risk picture is clearly low.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 148.14,
+    "amount_received": 148.14,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.3821
+  },
+  {
+    "alert_id": "11",
+    "score": 0.4307,
+    "label": "Review required",
+    "confidence": "low",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.7766200304031372
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.6662980914115906
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.6242551803588867
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.4107963740825653
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.10661758482456207
+      }
+    ],
+    "narrative": "This alert was triggered at a medium risk score of 0.431, involving a small transaction of 211.65 in an unspecified currency. The customer is low risk (tier 0) and there is no cross-currency transfer. The primary risk factor is an elevated merchant category risk, though this is partially offset by the model treating both the amount paid and amount received as risk-lowering signals. The counterparty jurisdiction risk is moderate at 0.52 but not at a level that independently warrants escalation. The missing currency and payment method fields are noted as documentation gaps but do not represent genuine risk factors in this context.",
+    "recommended_action": "Review required",
+    "amount_paid": 211.65,
+    "amount_received": 211.65,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.5203
+  },
+  {
+    "alert_id": "12",
+    "score": 0.0976,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.1354622840881348
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.31474167108535767
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.23764367401599884
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.19684992730617523
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.10820677876472473
+      }
+    ],
+    "narrative": "This transaction of 3,318.09 (currency not specified) has been flagged with a very low risk score of 0.098. The customer is in the lowest risk tier, the counterparty jurisdiction risk is minimal at 0.13, and the transaction is not cross-currency. The model's top features are predominantly risk-lowering, driven by merchant category and account age, with only a minor risk-raising contribution from the transaction amount. The missing currency and payment method fields are noted as documentation gaps but do not introduce genuine risk concerns given the otherwise low-risk profile across all substantive factors.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 3318.09,
+    "amount_received": 3318.09,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.1309
+  },
+  {
+    "alert_id": "13",
+    "score": 0.0475,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.1413757801055908
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.5297852158546448
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.47297656536102295
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.39301931858062744
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.39280474185943604
+      }
+    ],
+    "narrative": "This alert presents a very low risk score of 0.048, and all three top model features are risk-lowering, indicating the transaction pattern is consistent with normal, expected behaviour. The transaction amount of 362.61 is small and well below any reporting threshold. The customer is in the lowest risk tier (0) and there is no cross-currency transfer involved. The currency and payment method fields are not populated, which is a documentation gap worth noting, but given the absence of any genuine risk factors, this does not warrant escalation or review on its own. The counterparty jurisdiction risk of 0.63 is moderate but is not elevated to a level that, combined with the other low-risk indicators, would suggest suspicious activity.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 362.61,
+    "amount_received": 362.61,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.629
+  },
+  {
+    "alert_id": "14",
+    "score": 0.1088,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.6185715198516846
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.33092406392097473
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.2147812396287918
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.12703631818294525
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "increases_risk",
+        "magnitude": 0.11181122064590454
+      }
+    ],
+    "narrative": "This alert presents a low model risk score of 0.109 on a small transaction of 685.19, with all top model features acting to lower risk. The counterparty jurisdiction risk is very low at 0.10, and the customer is at a medium risk tier (tier 1), which does not trigger any mandatory escalation. The currency and payment method fields are missing, which represents a documentation gap but, given the absence of any genuine risk factors, this alone does not warrant escalation or review. No escalation criteria are met: the amount is well below reporting thresholds, the score is low, and there are no high-risk jurisdictional or behavioural signals.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 685.19,
+    "amount_received": 685.19,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.0974
+  },
+  {
+    "alert_id": "15",
+    "score": 0.099,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.9659068584442139
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.1780117303133011
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.17211905121803284
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.16486600041389465
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.13424992561340332
+      }
+    ],
+    "narrative": "This transaction has a very low risk score of 0.099 and involves a modest amount of 3,138.28 in an unspecified currency. The customer is in the lowest risk tier (tier 0) and the counterparty jurisdiction risk is low at 0.28. The model is primarily driven by risk-lowering factors, with the transaction amount providing only a minor upward contribution. The currency and payment method fields are not populated, which is a documentation gap but does not constitute a genuine risk factor given the otherwise low-risk profile across all meaningful indicators.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 3138.28,
+    "amount_received": 3138.28,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.2816
+  },
+  {
+    "alert_id": "16",
+    "score": 0.0464,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.287794828414917
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.59798264503479
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.3911382555961609
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.3086007237434387
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.28114771842956543
+      }
+    ],
+    "narrative": "This transaction of 169.19 (currency not specified) has been flagged with a very low risk score of 0.046, and all three model features actively lower the assessed risk. The customer is in the lowest risk tier, the transaction amount is minimal, and there is no cross-currency component. The counterparty jurisdiction risk is moderate at 0.60, but this alone is insufficient to elevate concern given the otherwise uniformly low-risk profile. Missing currency and payment method fields are noted as documentation gaps but do not introduce genuine risk in this context.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 169.19,
+    "amount_received": 169.19,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.596
+  },
+  {
+    "alert_id": "17",
+    "score": 0.0193,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 1.8979219198226929
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 1.0271600484848022
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.44384312629699707
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.3456604480743408
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.34131643176078796
+      }
+    ],
+    "narrative": "This transaction involves a very small amount of 13.41 in an unspecified currency, and the model has assigned an extremely low risk score of 0.019. All three top risk factors \u2014 transaction amount, amount received, and counterparty jurisdiction risk \u2014 are flagged as risk-lowering, which is internally consistent. The customer is in the lowest risk tier (0) and the counterparty jurisdiction risk is moderate at 0.37 but is treated as risk-reducing by the model. The missing currency and payment method fields are noted as documentation gaps but do not constitute genuine risk factors given the overall low-risk profile.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 13.41,
+    "amount_received": 13.41,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.3652
+  },
+  {
+    "alert_id": "18",
+    "score": 0.1575,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 1.072039008140564
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.8614176511764526
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.33889853954315186
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.3371345102787018
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.27524736523628235
+      }
+    ],
+    "narrative": "This alert has a low model score of 0.158 and involves a very small transaction of 125.34 in an unspecified currency. The customer is low risk (tier 0) and the counterparty jurisdiction risk is low at 0.21. The only risk-increasing factor is merchant category risk, which has a modest impact, while both amount-related features actively lower the risk score. The currency and payment method fields are missing, which is a documentation gap, but given the absence of any genuine risk factors these gaps alone do not warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 125.34,
+    "amount_received": 125.34,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.2078
+  },
+  {
+    "alert_id": "19",
+    "score": 0.5851,
+    "label": "Review required",
+    "confidence": "low",
+    "top_features": [
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.7442076206207275
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.6667168736457825
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.4373586177825928
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.26471543312072754
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "increases_risk",
+        "magnitude": 0.16972965002059937
+      }
+    ],
+    "narrative": "This transaction of 252,632.65 (currency not specified) has been flagged with a medium risk score of 0.585. The amount significantly exceeds the 100,000 threshold, which alone triggers escalation under criterion 2 given the score is above 0.50. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is low at 0.22. Two model features are risk-increasing (merchant category risk and hour of day), while the day of week lowers risk; the payment method and currency are undocumented, but these are documentation gaps rather than standalone risk drivers. Applying the escalation criteria, criterion 2 is clearly met: transaction amount exceeds 100,000 and the score exceeds 0.50, requiring immediate escalation.",
+    "recommended_action": "Escalate",
+    "amount_paid": 252632.65,
+    "amount_received": 252632.65,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.2227
+  },
+  {
+    "alert_id": "20",
+    "score": 0.1652,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 1.3228745460510254
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.47036901116371155
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.3409627377986908
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.23294545710086823
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.21994639933109283
+      }
+    ],
+    "narrative": "This transaction of 1,645.28 (currency not specified) has been assigned a low risk score of 0.165, and the overall profile supports that assessment. The customer is in the lowest risk tier, the counterparty jurisdiction risk is low at 0.18, and there is no cross-currency element. The merchant category raises risk slightly, but this is offset by the transaction hour and amount, both of which lower risk. The missing currency and payment method fields are documentation gaps that should be noted but do not introduce genuine risk given the otherwise low-risk profile.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 1645.28,
+    "amount_received": 1645.28,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.1845
+  },
+  {
+    "alert_id": "21",
+    "score": 0.1835,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.8245984315872192
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.6974981427192688
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.47593414783477783
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.402011513710022
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.3587495684623718
+      }
+    ],
+    "narrative": "This transaction of 240.34 (currency not specified) carries a low model risk score of 0.183 and involves a low-risk tier 0 customer. The counterparty jurisdiction risk is moderate at 0.46, which does not reach a high-risk threshold. The primary risk-raising factor is merchant category risk, while both the amount paid and amount received strongly lower the overall risk profile. The missing currency and payment method fields are documentation gaps worth noting but do not indicate genuine risk in this context.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 240.34,
+    "amount_received": 240.34,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.4566
+  },
+  {
+    "alert_id": "22",
+    "score": 0.0713,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.1594953536987305
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.5506385564804077
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.4946666359901428
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.27222296595573425
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.15532158315181732
+      }
+    ],
+    "narrative": "This transaction of 2,216.12 (currency not specified) carries a very low model score of 0.071, indicating minimal algorithmic concern. The counterparty jurisdiction risk is negligible at 0.08, and the customer is at a medium risk tier (tier 1), which does not trigger any elevated minimum action. The dominant risk factor is merchant category, which actually lowers risk, while the day-of-week flag raises risk only marginally. The missing currency and payment method fields are noted as documentation gaps but do not, in combination with these otherwise low-risk signals, warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 2216.12,
+    "amount_received": 2216.12,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.0817
+  },
+  {
+    "alert_id": "23",
+    "score": 0.1861,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 1.0240423679351807
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.8704237341880798
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.5117965936660767
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.3316947817802429
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.23176158964633942
+      }
+    ],
+    "narrative": "This alert has a low model score of 0.186 and involves a very small transaction amount of 237.21, which the model identifies as risk-lowering. The customer is in the lowest risk tier (0) and there is no cross-currency transfer involved. The merchant category risk is flagged as a risk-raising factor, and the counterparty jurisdiction risk is moderately elevated at 0.82, though this does not reach the threshold that would trigger escalation. The currency and payment method fields are missing, which is noted as a documentation gap but does not constitute a genuine risk factor on its own given the otherwise low-risk profile. No escalation criteria are met: the score is well below 0.80, the amount is far below reporting thresholds, jurisdiction risk does not exceed 0.90, and there is no internal model inconsistency.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 237.21,
+    "amount_received": 237.21,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.8242
+  },
+  {
+    "alert_id": "24",
+    "score": 0.1181,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.942020833492279
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.7117509841918945
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.6277790665626526
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.5616021752357483
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.4233247935771942
+      }
+    ],
+    "narrative": "This alert presents a very low risk profile with a model score of 0.118. The transaction amount of 312.32 is small, and the model identifies both the amount and counterparty jurisdiction risk as risk-lowering factors. The customer is in the lowest risk tier (0) and the counterparty jurisdiction risk is low at 0.21. Currency and payment method fields are missing, but these are documentation gaps only and do not constitute genuine risk factors given the otherwise clearly low-risk profile.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 312.32,
+    "amount_received": 312.32,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.214
+  },
+  {
+    "alert_id": "25",
+    "score": 0.0111,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.103987693786621
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.9842047691345215
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.5747157335281372
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.5586252212524414
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.3266712725162506
+      }
+    ],
+    "narrative": "This transaction of 4,704.95 (currency not specified) carries a very low model score of 0.011, with all top risk factors actively lowering the assessed risk. The customer is in the lowest risk tier (0), the counterparty jurisdiction risk is low at 0.25, and the merchant category and account age both contribute to reducing risk. The payment method and currency fields are missing, which are documentation gaps worth noting but do not constitute genuine risk factors in this context. No escalation criteria are met: the amount is well below reporting thresholds, the score is extremely low, and there are no high-risk jurisdictional or behavioural signals.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 4704.95,
+    "amount_received": 4704.95,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.2547
+  },
+  {
+    "alert_id": "26",
+    "score": 0.1453,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.515058994293213
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.4101572334766388
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.2891833782196045
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.18081045150756836
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.1377771943807602
+      }
+    ],
+    "narrative": "This transaction of 4,428.24 (currency not specified) carries a low model score of 0.145, and the amount is well below common reporting thresholds. The payment method and currency fields are undocumented, which are noted as data quality gaps but do not independently drive escalation. The counterparty jurisdiction risk is moderate at 0.60, and the primary risk-raising factors are timing-related (day of week and hour of day), which are relatively weak signals. However, the customer is classified as the highest risk tier (Tier 2), which mandates a minimum of 'Review required' regardless of the low model score.",
+    "recommended_action": "Review required",
+    "amount_paid": 4428.24,
+    "amount_received": 4428.24,
+    "customer_risk_tier": 2,
+    "counterparty_jurisdiction_risk": 0.596
+  },
+  {
+    "alert_id": "27",
+    "score": 0.0326,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.1656972169876099
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.953430712223053
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.5139747262001038
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.3853747248649597
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.3546903431415558
+      }
+    ],
+    "narrative": "This transaction involves an amount of 28,106,696.15 (currency not specified), which far exceeds the 1,000,000 threshold that triggers mandatory escalation regardless of model score. The counterparty jurisdiction risk is 0.98, which is extremely high and independently triggers escalation under criterion 3 (jurisdiction risk > 0.90). Additionally, the model is behaving inconsistently: a counterparty jurisdiction risk of 0.98 \u2014 a clear high-risk input \u2014 is being treated as risk-lowering by the model, which triggers escalation under criterion 5. These three independent escalation criteria are met simultaneously, making this alert a clear priority for immediate compliance action despite the low overall model score. The missing currency and payment method fields are noted as documentation gaps but are not the basis for this escalation decision.",
+    "recommended_action": "Escalate",
+    "amount_paid": 28106696.15,
+    "amount_received": 28106696.15,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.9801
+  },
+  {
+    "alert_id": "28",
+    "score": 0.0259,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 1.5736494064331055
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 1.1686168909072876
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.6272377371788025
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.47231218218803406
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.44068408012390137
+      }
+    ],
+    "narrative": "This alert carries a very low model score of 0.026, indicating minimal risk. The customer is in the lowest risk tier (tier 0) and the counterparty jurisdiction risk is negligible at 0.05. The transaction amount is less than 1 in an unspecified currency, which is extremely small and not anomalous. The only risk-raising factor is merchant category risk, which has a modest impact and is insufficient on its own to elevate concern. Currency and payment method fields are missing, noted as documentation gaps, but given the absence of any genuine risk factors these omissions do not warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 0.95,
+    "amount_received": 0.95,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.0537
+  },
+  {
+    "alert_id": "29",
+    "score": 0.1424,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.8016818761825562
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.2911013960838318
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.2810126543045044
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.27799153327941895
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.26591482758522034
+      }
+    ],
+    "narrative": "This transaction of 41,060.46 (currency not specified) has been flagged with a low risk score of 0.142. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is low at 0.27. The model is primarily driven by risk-lowering factors \u2014 merchant category and account age \u2014 with only a modest risk-raising contribution from the received amount. The currency and payment method fields are undocumented, which is a data quality gap worth noting, but these missing fields alone do not constitute genuine risk factors given the otherwise low-risk profile. No escalation criteria are met: the amount is well below 100,000, not within 10% of a round reporting threshold, the score is below 0.30, jurisdiction risk is below 0.90, and there is no internal model inconsistency.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 41060.46,
+    "amount_received": 41060.46,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.2693
+  },
+  {
+    "alert_id": "30",
+    "score": 0.0171,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.7161935567855835
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.0569190979003906
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.5707108378410339
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.542129635810852
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.21467092633247375
+      }
+    ],
+    "narrative": "This transaction of approximately 49,187 (currency not specified) has been flagged with a very low risk score of 0.017, and all three model features are risk-lowering, including a near-zero counterparty jurisdiction risk of 0.01 and a low-risk merchant category. The customer is in the lowest risk tier (0). However, the transaction amount of 49,186.60 falls within 10% below the 50,000 round reporting threshold, which would normally trigger escalation under criterion 4 \u2014 but this requires the model score to exceed 0.30, which it does not (score is 0.017). Therefore, criterion 4 is not triggered. The missing currency and payment method fields are noted as documentation gaps but do not constitute genuine risk factors given the absence of any other risk-elevating signals. Overall, this alert presents as a false positive with no genuine indicators of suspicious activity.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 49186.6,
+    "amount_received": 49186.6,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.0053
+  },
+  {
+    "alert_id": "31",
+    "score": 0.0409,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.1845194101333618
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.7792329788208008
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.5284362435340881
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.46102386713027954
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.30679863691329956
+      }
+    ],
+    "narrative": "This transaction of 236.57 (currency not specified) has been flagged with a very low risk score of 0.041, and all three model features are risk-lowering, indicating the model sees no meaningful concern here. The customer is in the lowest risk tier and the transaction amount is very small. The counterparty jurisdiction risk of 0.63 is moderate but is not elevated enough on its own to warrant further action, particularly given the low score and low customer tier. The missing currency and payment method fields are noted as documentation gaps but do not constitute genuine risk factors in this context.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 236.57,
+    "amount_received": 236.57,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.6345
+  },
+  {
+    "alert_id": "32",
+    "score": 0.027,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 1.5378553867340088
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.7301294803619385
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.7241082191467285
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.39966097474098206
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.3302652835845947
+      }
+    ],
+    "narrative": "This alert presents a very low risk score of 0.027 with a small transaction amount of 152.83 and no cross-currency transfer involved. The customer is in the lowest risk tier (0) and the counterparty jurisdiction risk is minimal at 0.13. All three model features are risk-lowering, indicating no anomalous behaviour. The currency and payment method fields are not populated, which is a documentation gap worth noting, but in the absence of any genuine risk factors this does not warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 152.83,
+    "amount_received": 152.83,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.1321
+  },
+  {
+    "alert_id": "33",
+    "score": 0.1163,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 1.2997056245803833
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.8099299669265747
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.3847011625766754
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.3720667362213135
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.3328876495361328
+      }
+    ],
+    "narrative": "This alert presents a very low risk profile with a model score of 0.116. The transaction amount of 128.21 is minimal, and all top model features \u2014 amount paid, amount received, and hour of day \u2014 are risk-lowering. The customer is in the lowest risk tier (0) and the counterparty jurisdiction risk is low at 0.30. The currency and payment method fields are not populated, which is a documentation gap, but given the absence of any genuine risk factors, this does not warrant escalation or further review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 128.21,
+    "amount_received": 128.21,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.3042
+  },
+  {
+    "alert_id": "34",
+    "score": 0.0925,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.1577774286270142
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.6159155964851379
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.29650479555130005
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.2925073802471161
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.28733450174331665
+      }
+    ],
+    "narrative": "This transaction of 251.91 (currency not specified) has been assigned a low risk score of 0.092, with all top model features acting to lower risk. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is moderate at 0.68, neither of which alone triggers escalation. The currency and payment method fields are missing, which represents a documentation gap but does not constitute a genuine risk factor given the otherwise low-risk profile. No escalation criteria are met: the amount is well below reporting thresholds, the score is very low, and there are no contradictory or high-risk signals present.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 251.91,
+    "amount_received": 251.91,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.6792
+  },
+  {
+    "alert_id": "35",
+    "score": 0.5949,
+    "label": "Review required",
+    "confidence": "low",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.7113298773765564
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.40067043900489807
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.3344021141529083
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.2616274356842041
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.1577286720275879
+      }
+    ],
+    "narrative": "This transaction of 1,632.39 (currency not specified) was flagged with a medium risk score of 0.595, driven primarily by elevated merchant category risk. However, the customer is low risk (tier 0), the counterparty jurisdiction risk is low at 0.25, and both day-of-week and jurisdiction risk are acting as risk-lowering factors in the model. The transaction amount is modest and does not approach any reporting threshold. The missing currency and payment method fields are noted as documentation gaps but do not represent genuine risk factors in this context. Overall, this alert presents as a likely false positive attributable to merchant category classification.",
+    "recommended_action": "Review required",
+    "amount_paid": 1632.39,
+    "amount_received": 1632.39,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.2468
+  },
+  {
+    "alert_id": "36",
+    "score": 0.0715,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.495720386505127
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.25605618953704834
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.2025696039199829
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.14181257784366608
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.11643695831298828
+      }
+    ],
+    "narrative": "This transaction has a very low model risk score of 0.072, and the customer is in the lowest risk tier with a counterparty jurisdiction risk of just 0.07. The dominant model feature is merchant category risk, which is actively lowering the overall score, and the transaction amount of approximately 6,378 is modest and well below any reporting threshold. The currency and payment method fields are not populated, which is a documentation gap worth noting, but in the absence of any genuine risk factors these missing fields do not warrant escalation or further review. Overall, this alert presents as a likely false positive.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 6377.63,
+    "amount_received": 6377.63,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.0661
+  },
+  {
+    "alert_id": "37",
+    "score": 0.125,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.454134702682495
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.4803895354270935
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.234512597322464
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.20473222434520721
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.12622712552547455
+      }
+    ],
+    "narrative": "This transaction of 3,779.82 (currency not specified) has been assigned a low risk score of 0.125 by the AML monitoring system. The customer is in the lowest risk tier (tier 0), and the transaction amount is well below any standard reporting threshold. The counterparty jurisdiction risk is moderate at 0.60, but this alone does not constitute a genuine risk factor sufficient to elevate concern given the overall low-risk profile. The model's top risk factors show that merchant category and received amount are both risk-lowering, with only day-of-week marginally raising risk \u2014 a weak signal with no corroborating indicators. Missing currency and payment method fields are noted as documentation gaps but do not change the risk assessment here.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 3779.82,
+    "amount_received": 3779.82,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.596
+  },
+  {
+    "alert_id": "38",
+    "score": 0.0038,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 1.885273814201355
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 1.735403299331665
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.1441534757614136
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.863917350769043
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.22450515627861023
+      }
+    ],
+    "narrative": "This alert has an extremely low model risk score of 0.004, and the transaction amount of 58.68 is negligible. However, the counterparty jurisdiction risk is 0.92, which is very high and exceeds the 0.90 threshold that triggers mandatory escalation regardless of model score. Critically, the model is treating this high-risk jurisdiction input as risk-lowering, which constitutes internally inconsistent model behaviour under escalation criterion 5 \u2014 a jurisdiction risk above 0.85 is being scored as risk-reducing while jurisdiction risk also exceeds 0.85. Both escalation criteria 3 and 5 are independently met, requiring immediate escalation despite the low overall score. The currency field is listed as N/A, which is a documentation gap that should be resolved during the escalation review.",
+    "recommended_action": "Escalate",
+    "amount_paid": 58.68,
+    "amount_received": 58.68,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.9194
+  },
+  {
+    "alert_id": "39",
+    "score": 0.2217,
+    "label": "Likely false positive",
+    "confidence": "medium",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.383989691734314
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "increases_risk",
+        "magnitude": 0.21772274374961853
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.15923602879047394
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.0673883855342865
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.06093373894691467
+      }
+    ],
+    "narrative": "This alert has a low model score of 0.222 and involves a small transaction of 715.02 in an unspecified currency. The customer is low risk (tier 0) and the counterparty jurisdiction risk is low at 0.20. The dominant model factor is merchant category risk, which lowers the overall risk score; account age raises risk slightly but this is a minor signal. The currency and payment method fields are missing, which is a documentation gap, but given the absence of any genuine risk factors these omissions do not warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 715.02,
+    "amount_received": 715.02,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.1957
+  },
+  {
+    "alert_id": "40",
+    "score": 0.0552,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.243112564086914
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.9340531229972839
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.5627449154853821
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.5491304397583008
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.5038027763366699
+      }
+    ],
+    "narrative": "This alert presents a very low risk profile with a model score of 0.055, well below any escalation or review threshold. The transaction amount of 282.31 is minimal, and all three top model features \u2014 counterparty jurisdiction risk, amount paid, and account age \u2014 are actively lowering the risk score. The customer is in the lowest risk tier (0) and the counterparty jurisdiction risk is negligible at 0.02. The currency and payment method fields are not populated, but given the absence of any genuine risk factors, these documentation gaps alone do not warrant further action.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 282.31,
+    "amount_received": 282.31,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.0151
+  },
+  {
+    "alert_id": "41",
+    "score": 0.2137,
+    "label": "Likely false positive",
+    "confidence": "medium",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.497959852218628
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "increases_risk",
+        "magnitude": 0.30289435386657715
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.24790000915527344
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.24637354910373688
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.18165084719657898
+      }
+    ],
+    "narrative": "This transaction of 2076.55 (currency not specified) carries a low model score of 0.214, and the top contributing factors show that merchant category and amount received are both risk-lowering, with only account age raising risk slightly. The customer is medium risk tier (tier 1), and the counterparty jurisdiction risk is 0.75, which is elevated but does not breach the 0.90 escalation threshold. The currency and payment method fields are undocumented, which is a data quality gap worth noting, but these missing fields alone do not constitute genuine risk factors sufficient to elevate the action. No escalation criteria are met: the amount is well below reporting thresholds, the score is below 0.30, jurisdiction risk is below 0.90, and there is no internal model inconsistency.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 2076.55,
+    "amount_received": 2076.55,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.7504
+  },
+  {
+    "alert_id": "42",
+    "score": 0.1261,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.9199091196060181
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.6197425723075867
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.4704663157463074
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.3888077735900879
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.3279683291912079
+      }
+    ],
+    "narrative": "This alert presents a very low risk profile with a model score of 0.126 and a small transaction amount of 217.78. The customer is in the lowest risk tier (0) and the transaction is not cross-currency. The primary risk factor is merchant category risk, which raises concern slightly, but this is substantially outweighed by the amount-based risk-lowering factors. The currency and payment method fields are undocumented, which is a minor data quality gap, but given the absence of any genuine risk factors such as high jurisdiction risk, anomalous transaction size, or high customer tier, this does not warrant escalation or review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 217.78,
+    "amount_received": 217.78,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.4723
+  },
+  {
+    "alert_id": "43",
+    "score": 0.0116,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "decreases_risk",
+        "magnitude": 2.143311023712158
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.9215484857559204
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.7680041193962097
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.611985445022583
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.12463124096393585
+      }
+    ],
+    "narrative": "This transaction of 101,536.51 (currency not specified) has been flagged due to its size exceeding 100,000, though the model has assigned a very low risk score of 0.012. All three top model features are risk-lowering, including a low counterparty jurisdiction risk of 0.21, a low-risk merchant category, and a well-established account age. The payment method and currency fields are missing, which are documentation gaps worth noting, but these alone do not elevate the risk picture given the absence of any genuine risk factors. The customer is in the medium risk tier (tier 1), and the transaction amount triggers the soft review threshold \u2014 however, since the score is below 0.50, escalation criteria 2 is not met; the soft review threshold applies, requiring at minimum a Review required outcome given the amount exceeds 100,000 and the customer is not in the lowest risk tier with jurisdiction risk above 0.20.",
+    "recommended_action": "Review required",
+    "amount_paid": 101536.51,
+    "amount_received": 101536.51,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.2139
+  },
+  {
+    "alert_id": "44",
+    "score": 0.2828,
+    "label": "Likely false positive",
+    "confidence": "medium",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.8744054436683655
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.6581108570098877
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.5250262022018433
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.31212878227233887
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.0417226180434227
+      }
+    ],
+    "narrative": "This transaction has a low model score of 0.283 and involves a small amount of 879.78 in an unspecified currency from a low-risk customer (tier 0) with a low counterparty jurisdiction risk of 0.20. The dominant model signals are risk-lowering, driven by the transaction amounts on both sides, though merchant category risk does raise some concern. The missing currency and payment method fields are documentation gaps that should be noted but do not, on their own, elevate the risk assessment given the absence of any genuine risk factors. No escalation criteria are met: the amount is well below reporting thresholds, the score is low, and there are no high-risk jurisdiction or customer tier concerns.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 879.78,
+    "amount_received": 879.78,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.198
+  },
+  {
+    "alert_id": "45",
+    "score": 0.9159,
+    "label": "Likely true positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.9378104209899902
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "increases_risk",
+        "magnitude": 0.7418079376220703
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.44985100626945496
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.24087071418762207
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "increases_risk",
+        "magnitude": 0.18407581746578217
+      }
+    ],
+    "narrative": "This transaction has been flagged with a high risk score of 0.916, driven by three risk-increasing features: elevated merchant category risk, a high-impact day-of-week signal, and the transaction amount itself. The customer is at medium risk tier (tier 1), and the counterparty jurisdiction risk is low at 0.27. The currency and payment method fields are undocumented, which is a data quality gap but does not independently elevate risk here. Escalation is required because the score exceeds 0.80 and two or more features are risk-increasing (in fact all three top features raise risk), satisfying Criterion 1.",
+    "recommended_action": "Escalate",
+    "amount_paid": 6686.45,
+    "amount_received": 6686.45,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.2691
+  },
+  {
+    "alert_id": "46",
+    "score": 0.0294,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 2.2383601665496826
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 1.44905424118042
+      },
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 0.55586838722229
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.3724381625652313
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.25359615683555603
+      }
+    ],
+    "narrative": "This alert presents a very low risk score of 0.029 with a small transaction amount of 17.33, a low-risk customer (tier 0), and a moderate counterparty jurisdiction risk of 0.31. All three model features identified are risk-lowering, indicating the model sees no meaningful red flags in this transaction. The currency and payment method fields are missing, which is a documentation gap worth noting, but these alone do not elevate risk given the absence of any genuine risk factors. No escalation criteria are met, and the overall picture is consistent with a routine, low-value transaction.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 17.33,
+    "amount_received": 17.33,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.3052
+  },
+  {
+    "alert_id": "47",
+    "score": 0.6224,
+    "label": "Review required",
+    "confidence": "low",
+    "top_features": [
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.7206703424453735
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.379558265209198
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "increases_risk",
+        "magnitude": 0.24313399195671082
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 0.20374765992164612
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.19079925119876862
+      }
+    ],
+    "narrative": "This transaction of 3,627.50 (currency not specified) has been flagged with a medium risk score of 0.622, driven primarily by elevated merchant category risk and the transaction amount, both of which are risk-increasing factors. The counterparty jurisdiction risk is moderate at 0.68, and the customer is in the medium risk tier (tier 1). The payment method and currency are not recorded, which are documentation gaps worth noting but do not independently elevate the risk assessment here. Checking escalation criteria: the score is 0.622 with two risk-increasing features (merchant_category_risk and amount_paid), which meets criterion 1 (score > 0.80 is required \u2014 not met); the amount at ~3,627.50 does not exceed 100,000 nor 1,000,000; the jurisdiction risk of 0.68 does not exceed 0.90; the amount is not within 10% below a round reporting threshold; and there is no model inconsistency. No escalation criteria are triggered. The overall risk picture presents genuine ambiguity given the elevated merchant category risk combined with a medium risk score and moderate jurisdiction risk, warranting human review rather than dismissal.",
+    "recommended_action": "Review required",
+    "amount_paid": 3627.5,
+    "amount_received": 3627.5,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.6762
+  },
+  {
+    "alert_id": "48",
+    "score": 0.0242,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "hour_of_day",
+        "direction": "decreases_risk",
+        "magnitude": 1.9305603504180908
+      },
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.8654452562332153
+      },
+      {
+        "feature": "day_of_week",
+        "direction": "decreases_risk",
+        "magnitude": 0.7392750978469849
+      },
+      {
+        "feature": "amount_received",
+        "direction": "increases_risk",
+        "magnitude": 0.44021064043045044
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.3874903917312622
+      }
+    ],
+    "narrative": "This alert carries a very low model score of 0.024, and the top contributing features all act to lower risk. However, a critical inconsistency is present: the counterparty jurisdiction risk is recorded at 1.00 (the maximum possible value, indicating the highest-risk jurisdiction), yet the model is treating this as a risk-lowering factor. This directly triggers the internal inconsistency escalation criterion (criterion 5), as a high-risk input above 0.85 is being scored as risk-reducing. Additionally, counterparty jurisdiction risk at 1.00 independently satisfies criterion 3, which requires escalation regardless of model score. The currency field is missing, which is a documentation gap, but the jurisdiction risk alone is sufficient to warrant immediate escalation.",
+    "recommended_action": "Escalate",
+    "amount_paid": 11434.83,
+    "amount_received": 11434.83,
+    "customer_risk_tier": 0,
+    "counterparty_jurisdiction_risk": 0.997
+  },
+  {
+    "alert_id": "49",
+    "score": 0.0268,
+    "label": "Likely false positive",
+    "confidence": "high",
+    "top_features": [
+      {
+        "feature": "counterparty_jurisdiction_risk",
+        "direction": "decreases_risk",
+        "magnitude": 1.7398685216903687
+      },
+      {
+        "feature": "account_age_days",
+        "direction": "decreases_risk",
+        "magnitude": 0.6808047294616699
+      },
+      {
+        "feature": "amount_paid",
+        "direction": "decreases_risk",
+        "magnitude": 0.6551936864852905
+      },
+      {
+        "feature": "amount_received",
+        "direction": "decreases_risk",
+        "magnitude": 0.5365479588508606
+      },
+      {
+        "feature": "merchant_category_risk",
+        "direction": "increases_risk",
+        "magnitude": 0.5241522789001465
+      }
+    ],
+    "narrative": "This alert carries a very low model score of 0.027, and all three top risk factors are risk-lowering, indicating the model sees no meaningful red flags in this transaction. The transaction amount of 485.15 is small and well below any reporting threshold, and the counterparty jurisdiction risk is effectively zero. The customer is in the medium risk tier (tier 1), which does not trigger any minimum escalation requirement. Currency and payment method fields are missing, but these are documentation gaps only and, given the absence of any genuine risk factors, do not warrant escalation or further review.",
+    "recommended_action": "Dismiss",
+    "amount_paid": 485.15,
+    "amount_received": 485.15,
+    "customer_risk_tier": 1,
+    "counterparty_jurisdiction_risk": 0.0026
+  }
+]

@@ -126,6 +126,44 @@ After Claude returns an action, pipeline.py enforces two safety checks:
   no longer incorrectly escalated) — outputs/sample_predictions_v5.json 
   is the current baseline — 37 Dismiss / 6 Review required / 7 Escalate
 
+## Frontend (Next.js 14 App Router)
+
+Located at `frontend/`. Stack: Next.js 14.2, TypeScript, Tailwind CSS 3, IBM Plex Sans + Mono fonts.
+
+### Screens
+- `/` — Alert Queue: stat cards + sortable AlertTable
+- `/alerts/[id]` — Alert Detail: score ring, AI narrative, FeatureChart, transaction details
+- `/summary` — Batch Summary: action breakdown bars, confidence bars, ROI callout, escalated volume
+
+### Design system
+CSS variables in `globals.css`: `--navy` (#0f1f3d), `--navy-light` (#1a3358), `--surface` (#f8f9fc), `--border` (#e2e8f0), `--text-primary`, `--text-secondary`, `--green` (#0d9f6e), `--amber` (#d97706), `--red` (#dc2626). Sidebar is 220px navy. Score colours: <0.3 green, 0.3–0.6 amber, ≥0.6 red.
+
+### Data flow
+`lib/api.ts` — tries FastAPI at `NEXT_PUBLIC_API_URL` (default `http://localhost:8000`), falls back to `/alerts_v5.json` static file. All pages are client components that fetch on mount.
+
+### Running locally
+```
+cd frontend
+npm install
+npm run dev        # http://localhost:3000
+```
+Backend (optional, for live data):
+```
+uvicorn src.api:app --reload --port 8000
+```
+
+### Deployment
+- Frontend: Vercel — set `NEXT_PUBLIC_API_URL` env var to Fly.io URL
+- Backend: Fly.io fra region — `fly deploy` using `fly.toml` + `Dockerfile.api`
+
+## Backend API (FastAPI)
+
+`src/api.py` — serves enriched alerts JSON.
+- `GET /alerts` — returns all 50 alerts
+- `GET /alerts/{alert_id}` — returns single alert
+- Data source: `outputs/alerts_enriched.json`
+- CORS: allows `localhost:3000` and `*.vercel.app`
+
 ## Do not change
 - Model choice (XGBoost + SHAP + Claude)
 - Core feature set in features.py
