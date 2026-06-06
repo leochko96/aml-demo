@@ -4,8 +4,19 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const NAV = [
-  { label: 'False positive reduction', href: '/alerts', icon: '⚑' },
-  { label: 'Risk assessment', href: '/demo/rule-translator', icon: '▤' },
+  {
+    label: 'False positive reduction',
+    icon: '⚑',
+    children: [
+      { label: 'Alert Queue', href: '/alerts' },
+      { label: 'Batch Summary', href: '/summary' },
+    ],
+  },
+  {
+    label: 'Risk assessment',
+    icon: '▤',
+    href: '/demo/rule-translator',
+  },
 ]
 
 export default function Sidebar() {
@@ -13,6 +24,12 @@ export default function Sidebar() {
 
   function isActive(href: string) {
     return pathname === href || pathname.startsWith(href + '/')
+  }
+
+  function isSectionActive(item: typeof NAV[number]) {
+    if ('href' in item && item.href) return isActive(item.href)
+    if ('children' in item) return item.children.some((c) => isActive(c.href))
+    return false
   }
 
   return (
@@ -49,14 +66,51 @@ export default function Sidebar() {
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 px-3 py-4 space-y-0.5">
+      <nav className="flex-1 px-3 py-4 space-y-1">
         {NAV.map((item) => {
-          const active = isActive(item.href)
+          const sectionActive = isSectionActive(item)
+
+          if ('children' in item) {
+            return (
+              <div key={item.label}>
+                {/* Section header */}
+                <div
+                  className="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider"
+                  style={{ color: sectionActive ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.40)' }}
+                >
+                  <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>{item.icon}</span>
+                  {item.label}
+                </div>
+                {/* Children */}
+                <div className="ml-4 space-y-0.5">
+                  {item.children.map((child) => {
+                    const active = isActive(child.href)
+                    return (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                        style={{
+                          color: active ? '#ffffff' : 'rgba(255,255,255,0.55)',
+                          background: active ? 'var(--navy-light)' : 'transparent',
+                          borderLeft: active ? '2px solid #0d9f6e' : '2px solid transparent',
+                        }}
+                      >
+                        {child.label}
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          }
+
+          const active = isActive(item.href!)
           return (
             <Link
               key={item.href}
-              href={item.href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors relative"
+              href={item.href!}
+              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors"
               style={{
                 color: active ? '#ffffff' : 'rgba(255,255,255,0.55)',
                 background: active ? 'var(--navy-light)' : 'transparent',
