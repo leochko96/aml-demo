@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 const NAV = [
   { label: 'Alert Queue', href: '/', icon: '⚑' },
   { label: 'Batch Summary', href: '/summary', icon: '▤' },
+  { label: 'Demos', href: '/demo', icon: '◈' },
 ]
 
 export default function Sidebar() {
