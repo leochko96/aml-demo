@@ -3,7 +3,16 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const NAV = [
+type NavChild = { label: string; href: string }
+type NavSection = { label: string; icon: string; children: NavChild[] }
+type NavLink = { label: string; icon: string; href: string }
+type NavItem = NavSection | NavLink
+
+function isSection(item: NavItem): item is NavSection {
+  return 'children' in item
+}
+
+const NAV: NavItem[] = [
   {
     label: 'False positive reduction',
     icon: '⚑',
@@ -26,10 +35,9 @@ export default function Sidebar() {
     return pathname === href || pathname.startsWith(href + '/')
   }
 
-  function isSectionActive(item: typeof NAV[number]) {
-    if ('href' in item && item.href) return isActive(item.href)
-    if ('children' in item) return item.children?.some((c) => isActive(c.href)) ?? false
-    return false
+  function isSectionActive(item: NavItem) {
+    if (isSection(item)) return item.children.some((c) => isActive(c.href))
+    return isActive(item.href)
   }
 
   return (
@@ -70,7 +78,7 @@ export default function Sidebar() {
         {NAV.map((item) => {
           const sectionActive = isSectionActive(item)
 
-          if ('children' in item) {
+          if (isSection(item)) {
             return (
               <div key={item.label}>
                 {/* Section header */}
@@ -83,7 +91,7 @@ export default function Sidebar() {
                 </div>
                 {/* Children */}
                 <div className="ml-4 space-y-0.5">
-                  {(item.children ?? []).map((child) => {
+                  {item.children.map((child) => {
                     const active = isActive(child.href)
                     return (
                       <Link
@@ -105,11 +113,11 @@ export default function Sidebar() {
             )
           }
 
-          const active = isActive(item.href!)
+          const active = isActive(item.href)
           return (
             <Link
               key={item.href}
-              href={item.href!}
+              href={item.href}
               className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors"
               style={{
                 color: active ? '#ffffff' : 'rgba(255,255,255,0.55)',
