@@ -4,16 +4,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const NAV = [
-  { label: 'Alert Queue', href: '/', icon: '⚑' },
-  { label: 'Batch Summary', href: '/summary', icon: '▤' },
-  { label: 'Demos', href: '/demo', icon: '◈' },
+  { label: 'False positive reduction', href: '/alerts', icon: '⚑' },
+  { label: 'Risk assessment', href: '/demo/rule-translator', icon: '▤' },
 ]
 
 export default function Sidebar() {
   const pathname = usePathname()
 
   function isActive(href: string) {
-    if (href === '/') return pathname === '/' || pathname.startsWith('/alerts')
     return pathname === href || pathname.startsWith(href + '/')
   }
 
