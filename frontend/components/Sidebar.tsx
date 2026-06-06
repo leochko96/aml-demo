@@ -28,7 +28,7 @@ export default function Sidebar() {
 
   function isSectionActive(item: typeof NAV[number]) {
     if ('href' in item && item.href) return isActive(item.href)
-    if ('children' in item) return item.children.some((c) => isActive(c.href))
+    if ('children' in item) return item.children?.some((c) => isActive(c.href)) ?? false
     return false
   }
 
