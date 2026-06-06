@@ -83,7 +83,7 @@ export default function Sidebar() {
                 </div>
                 {/* Children */}
                 <div className="ml-4 space-y-0.5">
-                  {item.children.map((child) => {
+                  {(item.children ?? []).map((child) => {
                     const active = isActive(child.href)
                     return (
                       <Link
